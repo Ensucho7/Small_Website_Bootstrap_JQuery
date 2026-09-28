@@ -6,11 +6,17 @@ $(document).ready(function(){
         $.get(url, function(data) {
             $("#repoTable tbody").empty();
 
+
             $.each(data, function(index, value) {
+
+                var descNotNull = value.description;
+                if (descNotNull === null){
+                    descNotNull = "";
+                }
 
                 var row = "<tr>";
                 row += "<td>" + value.name + "</td>";
-                row += "<td>" + value.description + "</td>";
+                row += "<td>" + descNotNull + "</td>";
                 row += "<td>" + value.stargazers_count + "</td>";
                 row += "</tr>";
 
